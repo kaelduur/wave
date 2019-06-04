@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject deadEffect;
+    public GameObject deathEffect;
     public GameObject collectibleEffect;
 
     public Rigidbody rb;
@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     public float upSpeed = 2.5f;
     public float maxUpSpeed = 3f;
     public bool isBoosted = false;
+
+    public AudioClip itemSound;
+    public AudioClip deathSound;
 
     Vector3 startPos;
     bool isDead = false;
@@ -58,7 +61,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Obstacle")
         {
-            Dead();
+            Death();
         }
         else if (other.gameObject.tag == "Collectible")
         {
@@ -68,6 +71,7 @@ public class PlayerController : MonoBehaviour
 
     void GetItem(Collider other)
     {
+        SoundManager.instance.PlaySingle(itemSound);
         SetBackgroundColor();
 
         Destroy(Instantiate(collectibleEffect, other.gameObject.transform.position, Quaternion.identity), 0.5f);
@@ -75,13 +79,15 @@ public class PlayerController : MonoBehaviour
         gameController.AddScore();
     }
 
-    void Dead()
+    void Death()
     {
         isDead = true;
+        SoundManager.instance.PlaySingle(deathSound);
+        // SoundManager.instance.musicSource.Stop(); // Stops the music
 
         StartCoroutine(Camera.main.gameObject.GetComponent<CameraShake>().Shake());
 
-        Destroy(Instantiate(deadEffect, transform.position, Quaternion.identity), 0.7f);
+        Destroy(Instantiate(deathEffect, transform.position, Quaternion.identity), 0.7f);
         StopPlayer();
 
         gameController.CallGameOver();
