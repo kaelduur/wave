@@ -57,21 +57,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Audio delay fix
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Obstacle")
         {
+            SoundManager.instance.PlaySingle(deathSound);
+            // SoundManager.instance.musicSource.Stop(); // Stops the music
             Death();
         }
         else if (other.gameObject.tag == "Collectible")
         {
+            SoundManager.instance.PlaySingle(itemSound);
             GetItem(other);
         }
     }
 
     void GetItem(Collider other)
     {
-        SoundManager.instance.PlaySingle(itemSound);
         SetBackgroundColor();
 
         Destroy(Instantiate(collectibleEffect, other.gameObject.transform.position, Quaternion.identity), 0.5f);
@@ -82,8 +85,6 @@ public class PlayerController : MonoBehaviour
     void Death()
     {
         isDead = true;
-        SoundManager.instance.PlaySingle(deathSound);
-        // SoundManager.instance.musicSource.Stop(); // Stops the music
 
         StartCoroutine(Camera.main.gameObject.GetComponent<CameraShake>().Shake());
 
