@@ -9,4 +9,4 @@ Hyper casual game made in Unity.
 [SFX](https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116)
 
 ## Gameplay Video
-[![Wave Gameplay](https://i.ibb.co/XjWdyLR/Gameplay-02-vertical-Moment.jpg)](https://youtu.be/uJRrlJ75g3E "Wave Gameplay")
+[![Wave Gameplay](https://i.ibb.co/YDQN3tH/wave02.jpg)](https://youtu.be/uJRrlJ75g3E "Wave Gameplay")
