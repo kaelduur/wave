@@ -4,7 +4,7 @@
 Hyper casual game made in Unity.
 
 ## Download
-<img src="/google-play-badge.png" width="25%" height="25%">
+[<img src="/google-play-badge.png" width="25%" height="25%">](https://play.google.com/store/apps/details?id=com.kbu.wave)
 
 You can also download [APK file](https://github.com/kaelduur/wave/releases/download/v1.0/Wave.apk) without Google Play integration.
 
